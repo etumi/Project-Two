@@ -20,6 +20,7 @@ Base.prepare(engine, reflect=True)
 Weather = Base.classes.weather
 Pollution = Base.classes.pollution
 Co2_data = Base.classes.co2_aqi
+Coordinates = Base.classes.states_cord
 
 app=Flask(__name__) #, static_url_path="", static_folder="web/static", template_folder="templates")
 
@@ -28,9 +29,17 @@ app=Flask(__name__) #, static_url_path="", static_folder="web/static", template_
 def home():
     return (render_template("index.html"))
 
-@app.route("/page2")
-def page2():
-    return (render_template("page2.html"))
+@app.route("/weather")
+def timeline():
+    return (render_template("weather.html"))
+
+@app.route("/heatmap")
+def heatmap():
+    return (render_template("heatmap.html"))
+
+@app.route("/pie")
+def pie():
+    return (render_template("pie.html"))
 
 
 @app.route("/api/weather")
@@ -62,12 +71,12 @@ def pollution():
     session = Session(engine)
 
     # Query all passengers
-    results = session.query(Pollution.state, Pollution.year, Pollution.no2, Pollution.o3, Pollution.so2, Pollution.co).all()
+    results = session.query(Pollution.state, Pollution.year, Pollution.no2, Pollution.o3, Pollution.so2, Pollution.co, Coordinates.lat, Coordinates.lng).join(Coordinates, Coordinates.city == Pollution.state).all()
 
     session.close()
 
     all_aqi = []
-    for state, year, no2, o3, so2, co in results:
+    for state, year, no2, o3, so2, co, lat, lng in results:
         state_dict = {}
         state_dict["state"] = state
         state_dict["year"] = year
@@ -75,6 +84,7 @@ def pollution():
         state_dict["so2"] = so2
         state_dict["o3"] = o3
         state_dict["co"] = co
+        state_dict["coord"] = [lat, lng]
         all_aqi.append(state_dict)
 
 

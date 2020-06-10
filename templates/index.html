@@ -2,12 +2,19 @@
 <html lang="en">
   <head>
     <!-- Required meta tags -->
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Leaflet Dependencies-->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.3/dist/leaflet.css" integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ==" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.3.3/dist/leaflet.js" integrity="sha512-tAGcCfR4Sc5ZP5ZoVz0quoZDYX5aCtEm/eu1KhSLj2c9eFrylXZknQYmxUssFaVJKvvc0dJQixhGjG2yXWiV9Q==" crossorigin=""></script>
+   <!-- D3 -->
+    <script src=“https://cdnjs.cloudflare.com/ajax/libs/d3/5.9.7/d3.min.js”></script>
+    <link rel="stylesheet" href="../static/css/style.css" />
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css" />
+    <!-- Plotly -->
+    <script src=“https://cdn.plot.ly/plotly-latest.min.js”></script>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <link rel="stylesheet" href="bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="style.css">
     <title>index</title>
   </head>
   
@@ -23,9 +30,9 @@
       <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
       <p class="lead">-->
       <hr>
-        <a class="btn btn-primary" href="Page1" role="button">Page 1</a>
-        <a class="btn btn-primary" href="page2" role="button">Page 2</a>
-        <a class="btn btn-primary" href="Page3.html" role="button">Page 3</a>
+        <a class="btn btn-primary" href="weather" role="button">Timeline of Pollution</a>
+        <a class="btn btn-primary" href="heatmap" role="button">Heatmap</a>
+        <a class="btn btn-primary" href="pie" role="button">Pie Graph</a>
       </p>
     </div>
 ​
@@ -33,7 +40,6 @@
   <div class="container">
     <div class ="row">
       <div class = "col-xl-6">
-        
         <div class="card mb-3">
           <h3 class="card-header">Card header</h3>
           <div class="card-body">
@@ -49,13 +55,73 @@
             <a href="#" class="card-link">Another link</a>
           </div>
         </div>
-​
+      </div> 
+      <div class = "col-xl-6">
+          <div class="card mb-3">
+            <h3 class="card-header">Card header</h3>
+            <div class="card-body">
+              <h5 class="card-title">Special title treatment</h5>
+              <h6 class="card-subtitle text-muted">Support card subtitle</h6>
+            </div>
+            <img style="height: 200px; width: 100%; display: block;" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22318%22%20height%3D%22180%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20318%20180%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_158bd1d28ef%20text%20%7B%20fill%3Argba(255%2C255%2C255%2C.75)%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A16pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_158bd1d28ef%22%3E%3Crect%20width%3D%22318%22%20height%3D%22180%22%20fill%3D%22%23777%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22129.359375%22%20y%3D%2297.35%22%3EImage%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" alt="Card image">
+            <div class="card-body">
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+            <div class="card-body">
+              <a href="#" class="card-link">Card link</a>
+              <a href="#" class="card-link">Another link</a>
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <div class ="row">
+      <div class = "col-xl-6">
+        <div class="card mb-3">
+          <h3 class="card-header">Card header</h3>
+          <div class="card-body">
+            <h5 class="card-title">Special title treatment</h5>
+            <h6 class="card-subtitle text-muted">Support card subtitle</h6>
+          </div>
+          <img style="height: 200px; width: 100%; display: block;" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22318%22%20height%3D%22180%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20318%20180%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_158bd1d28ef%20text%20%7B%20fill%3Argba(255%2C255%2C255%2C.75)%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A16pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_158bd1d28ef%22%3E%3Crect%20width%3D%22318%22%20height%3D%22180%22%20fill%3D%22%23777%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22129.359375%22%20y%3D%2297.35%22%3EImage%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" alt="Card image">
+          <div class="card-body">
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          </div>
+          <div class="card-body">
+            <a href="#" class="card-link">Card link</a>
+            <a href="#" class="card-link">Another link</a>
+          </div>
+        </div>
+      </div> 
+      <div class = "col-xl-6">
+          <div class="card mb-3">
+            <h3 class="card-header">Card header</h3>
+            <div class="card-body">
+              <h5 class="card-title">Special title treatment</h5>
+              <h6 class="card-subtitle text-muted">Support card subtitle</h6>
+            </div>
+            <img style="height: 200px; width: 100%; display: block;" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22318%22%20height%3D%22180%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20318%20180%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_158bd1d28ef%20text%20%7B%20fill%3Argba(255%2C255%2C255%2C.75)%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A16pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_158bd1d28ef%22%3E%3Crect%20width%3D%22318%22%20height%3D%22180%22%20fill%3D%22%23777%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22129.359375%22%20y%3D%2297.35%22%3EImage%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" alt="Card image">
+            <div class="card-body">
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+            <div class="card-body">
+              <a href="#" class="card-link">Card link</a>
+              <a href="#" class="card-link">Another link</a>
+            </div>
+        </div>
       </div>
     </div>
   </div>
 ​
  
-    
+    <!-- API Key -->
+    <script type="text/javascript" src="../static/js/config.js"></script> 
+
+    <!-- JS -->
+    <script type="text/javascript" src="../static/js/heatmap.js"></script>
+
+    <!-- Leaflet heatmap plugin -->
+    <script type="text/javascript" src="../static/js/leaflet-heat.js"></script>
 ​
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

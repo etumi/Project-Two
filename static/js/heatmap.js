@@ -1,7 +1,7 @@
 // Creating map object
-var map = L.map("map", {
-  center: [0, 0], //[37.0902, -95.7129],
-  zoom: 2
+var myMap = L.map("map", {
+  center: [37.0902, -95.7129],
+  zoom: 6
 });
 
 // Adding tile layer
@@ -10,27 +10,37 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
   maxZoom: 18,
   id: 'mapbox/streets-v11',
   accessToken: API_KEY
-}).addTo(map);
+}).addTo(myMap);
 
-var url = "https://data.sfgov.org/resource/cuks-n6tp.json?$limit=10000";
+var url = "/api/pollution";
 
-// d3.json(url, function(response) {
+d3.json(url, function(response) {
 
-//   console.log(response);
+  console.log(response);
 
-//   var heatArray = [];
+  var heatArray = [];
 
-//   for (var i = 0; i < response.length; i++) {
-//     var location = response[i].location;
+  for (var i = 0; i < response.length; i++) {
+    var location = response[i].coord;
 
-//     if (location) {
-//       heatArray.push([location.coordinates[1], location.coordinates[0]]);
-//     }
-//   }
+    if (location) {
+      heatArray.push([location[1], location[0]]);
+    }
+  }
 
-//   var heat = L.heatLayer(heatArray, {
-//     radius: 20,
-//     blur: 35
-//   }).addTo(myMap);
+  console.log("response")
+  console.log(heatArray);
 
-// });
+  var heat = L.heatLayer(heatArray, {
+    radius: 50,
+    blur: 35
+  }).addTo(myMap);
+
+});
+
+var circle = L.circle([37.0902, -95.7129], {
+  color: 'red',
+  fillColor: '#f03',
+  fillOpacity: 0.5,
+  radius: 5000
+}).addTo(myMap);
