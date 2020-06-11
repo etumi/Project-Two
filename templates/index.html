@@ -8,19 +8,21 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.3/dist/leaflet.css" integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ==" crossorigin="" />
     <script src="https://unpkg.com/leaflet@1.3.3/dist/leaflet.js" integrity="sha512-tAGcCfR4Sc5ZP5ZoVz0quoZDYX5aCtEm/eu1KhSLj2c9eFrylXZknQYmxUssFaVJKvvc0dJQixhGjG2yXWiV9Q==" crossorigin=""></script>
    <!-- D3 -->
-    <script src=“https://cdnjs.cloudflare.com/ajax/libs/d3/5.9.7/d3.min.js”></script>
-    <link rel="stylesheet" href="../static/css/style.css" />
-    <link rel="stylesheet" href="../static/css/bootstrap.min.css" />
+    <!-- <script src=“https://cdnjs.cloudflare.com/ajax/libs/d3/5.9.7/d3.min.js”></script> -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
     <!-- Plotly -->
-    <script src=“https://cdn.plot.ly/plotly-latest.min.js”></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <!-- <script src="plotly-latest.min.js"></script> -->
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <title>index</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css" />
+    <title>Homepage</title>
   </head>
   
   <body class="index">
     <div class="jumbotron">
-      <h1 class="display-3">US Gas Pollution</h1>
+      <h1 class="display-3">US Air Pollution</h1>
       <p class="lead"> Welcome to our website! With the pollution rates on the rise we decided to 
         examine the growth of the 5 Pollution causing gasses (NO2, O3, SO2, O3 and CO2) from 2000 to 2016 in US. 
         Further, we broke down this data by making meaning full graphs that helped us analyze the trends in the rise 
@@ -30,9 +32,9 @@
       <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
       <p class="lead">-->
       <hr>
-        <a class="btn btn-primary" href="weather" role="button">Timeline of Pollution</a>
-        <a class="btn btn-primary" href="heatmap" role="button">Heatmap</a>
-        <a class="btn btn-primary" href="pie" role="button">Pie Graph</a>
+        <a class="btn btn-primary" href="weather" role="button">CO2 Timeline</a>
+        <a class="btn btn-primary" href="heatmap" role="button">Pollution Map</a>
+        <a class="btn btn-primary" href="pie" role="button">Pollution Distribution</a>
       </p>
     </div>
 ​

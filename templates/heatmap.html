@@ -10,20 +10,19 @@
    <!-- D3 -->
     <!-- <script src=“https://cdnjs.cloudflare.com/ajax/libs/d3/5.9.7/d3.min.js”></script> -->
     <script src="https://d3js.org/d3.v5.min.js"></script>
-
-    <link rel="stylesheet" href="../static/css/style.css" />
-    <link rel="stylesheet" href="../static/css/bootstrap.min.css" />
     <!-- Plotly -->
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-    <script src="plotly-latest.min.js"></script>
+    <!-- <script src="plotly-latest.min.js"></script> -->
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="../static/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css" />
     <title>Heatmap</title>
   </head>
   
-    <body class = Pages>
+    <body class="Pages">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="/">US Gas Pollution</a>
+            <a class="navbar-brand" href="/"><h2>US Gas Pollution</h2></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
@@ -31,13 +30,13 @@
             <div class="collapse navbar-collapse" id="navbarColor03">
               <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                  <a class="nav-link" href="weather">Timeline of Pollution <span class="sr-only">(current)</span></a>
+                  <a class="nav-link" href="weather">CO2 Timeline<span class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="heatmap">Heatmap</a>
+                <li class="nav-item active">
+                  <a class="nav-link" href="heatmap">Pollution Map</a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="pie">Pie Charts</a>
+                <li class="nav-item active">
+                  <a class="nav-link" href="pie">Pollution Distribution</a>
                 </li>
               </ul>
             </div>
@@ -46,69 +45,39 @@
         <!-- vertical bar-->
         
         <nav class="nav navbar-expand-lg flex-sm-column">
-            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                States
-            </a>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                <a class="dropdown-item" href="#">Arizona</a>
-                <a class="dropdown-item" href="#">California</a>
-                <a class="dropdown-item" href="#">Colorado</a>
+            <h3 style="padding-left: 5px;"> Filter </h3>
+            <div class="form-group">
+              <label style="text-align: center;" for="years-dropdown">Years</label>
+              <select class="form-control" id="years-dropdown">
+              </select>
             </div>
-            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                AQI 
-            </a>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                <a class="dropdown-item" href="#">Arizona</a>
-                <a class="dropdown-item" href="#">California</a>
-                <a class="dropdown-item" href="#">Colorado</a>
-            </div>
-            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-               Years
-            </a>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                <a class="dropdown-item" href="#">Arizona</a>
-                <a class="dropdown-item" href="#">California</a>
-                <a class="dropdown-item" href="#">Colorado</a>
-            </div>
+            <hr style="width: 100%;">
+            <h3 style="padding-left: 10px;">Summary</h3>
+            <p style="padding-left: 10px;">This chart contains the Air Quality Index (AQI) for all 50 States from 2000 to 2016. Select the year you would like to view in the dropdown. Each marker has information on the AQI for CO, O3, SO2 and NO2</p>
         </nav>
     ​
         <!-- Content -->
-          <div class="container">
+          <div class="container" id="heatmap">
             <div class="row">
-                <!--Chart-->
-                <!-- <div class="col-xl-8"> -->
-                    <!-- <br>
-                    <br>
-                    <br> -->
-                    <!-- <div id="map"></div> -->
-                <!-- </div> -->
-                <!-- <div class="col-md-4">
-                    <div class="card border-primary mb-3" style="max-width: 20rem;">
-                        <div class="card-header">Header</div>
-                        <div class="card-body">
-                            <h4 class="card-title">Primary card title</h4>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        </div>
-                    </div>
-              </div> -->
-              <!-- <div id="map"></div> -->
+              <div class="col-xl-12">
+                <div id="map"></div>
+              </div>
             </div>
           </div>
-
-          <div id="map"></div>
-          <p>This heat map shows blah blah blah</p>
-
+​
+          
+​
     
 ​
     <!-- API Key -->
     <script type="text/javascript" src="../static/js/config.js"></script> 
-
+​
     <!-- JS -->
     <script type="text/javascript" src="../static/js/heatmap.js"></script>
-
+​
     <!-- Leaflet heatmap plugin -->
     <script type="text/javascript" src="../static/js/leaflet-heat.js"></script>
-
+​
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
