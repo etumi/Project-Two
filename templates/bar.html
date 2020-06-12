@@ -24,7 +24,7 @@
   
   <body class = Pages>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="/"><h2>US Gas Pollution</h2></a>
+      <a class="navbar-brand" href="/"><h2>US Air Pollution</h2></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -32,59 +32,62 @@
       <div class="collapse navbar-collapse" id="navbarColor03">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
+            <a class="nav-link" href="map">Pollution Map</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="bargraphs">Pollution Distribution</a>
+          </li>
+          <li class="nav-item active">
             <a class="nav-link" href="timeline">CO2 Timeline<span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="heatmap">Pollution Map</a>
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="pie">Pollution Distribution</a>
           </li>
         </ul>
       </div>
-  </nav>
+    </nav>
     
     <!-- vertical bar-->
     
     <nav class="nav navbar-expand-lg flex-sm-column">
-      <!-- <div>
-        <select id="state_selection" style="padding-left: 20px;"></select>
-      </div> -->
       <br>
+      <h3 style="padding-left: 5px;"> Filter </h3>
       <div class="form-group">
         <label style="text-align: center;" for="state_selection">State</label>
         <select class="form-control" id="state_selection" ></select>
-      </div>
       <br>
-      <label for="slidecontainer">Years</label>
-        <!-- <div class="slidecontainer" style="padding-left: 20%;"> -->
-          <select class="slidecontainer"></select>
-        <!-- </div> -->
-        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Slide slider to view different years</a>
+        <label for="aqi-dropdown">Gas</label>
+        <select class="form-control slidecontainer" id="aqi-dropdown"></select>
+      </div>
+      <hr style="width: 100%;">
+      <p style="padding-left: 10px; margin-bottom: 0;">This chart contains the Air Quality Index (AQI) for all 50 States from 2000 to 2016. Select the year and state you would like to view in the dropdown. Data may not be availabele for a given year for some states as AQI was not being recorded at the time.</p>
+      <div>
+        <hr>
+        <p style="padding-left: 8px; font-style: italic; margin-bottom: 0;">Air Quality Index Range Reference</p>
+        <img src="../static/images/aqi-ref.png" style="width: 290px; height: 290px; padding-left: 7px;">
+        <a href="https://www.epa.gov/outdoor-air-quality-data/air-data-basic-information">
+          <p style="padding-left: 8px; font-style: italic; margin-bottom: 0; font-size: 10px;">Source: EPA</p>
+        </a>
+      </div>
     </nav>
 
     <!-- Content -->
       <div class="container">
-        
-          <!-- <div>
-            <select id="state_selection"></select>
-          </div> -->
           
           <div id="charty">
             <br>
             <br>
             <canvas id="myChart"></canvas>
           </div>
-          
-            <!-- <div class="slidecontainer">Years</div> -->
 
+          <!-- <div>
+            <img src="../static/images/aqi-ref.png">
+          </div> -->
+        
       </div>
 
     <!-- API Key -->
     <script type="text/javascript" src="../static/js/config.js"></script> 
 
     <!-- JS -->
-    <script type="text/javascript" src="../static/js/pie.js"></script>
+    <script type="text/javascript" src="../static/js/bar.js"></script>
 
 
     <!-- Optional JavaScript -->

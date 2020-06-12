@@ -37,9 +37,9 @@ def timeline():
 def heatmap():
     return (render_template("map.html"))
 
-@app.route("/pie")
+@app.route("/bargraphs")
 def pie():
-    return (render_template("pie.html"))
+    return (render_template("bar.html"))
 
 
 @app.route("/api/weather")
