@@ -104,17 +104,16 @@ function createMap(){
     var filteredResponse = response.filter(filterData)
     console.log(filteredResponse);
 
-    if (clearLayer === "Yes") {
-      console.log("hi")
-      console.log(coLayerGroup)
-      myMap.removeLayer(coLayerGroup)
-      //myMap.removeLayer(cityMarkers)
-      // myMap.removeLayer(circleO3)
-      // myMap.removeLayer(circleNO2)
-      // myMap.removeLayer(circleSO2)
-      // myMap.removeLayer(marker)
-
-    }
+    // if (clearLayer === "Yes") {
+    //   console.log("hi")
+    //   console.log(coLayerGroup)
+    //   //myMap.removeLayer(coLayerGroup)
+    //   //myMap.removeLayer(cityMarkers)
+    //   // myMap.removeLayer(circleO3)
+    //   // myMap.removeLayer(circleNO2)
+    //   // myMap.removeLayer(circleSO2)
+    //   // myMap.removeLayer(marker)
+    // }
     // console.log(circleCO)
     // myMap.eachLayer(layer => {
     //   console.log("remove layer")
@@ -123,62 +122,45 @@ function createMap(){
     //   // myMap.removeLayer(layer)
     // })
       // myMap.removeLayer(circleCO);
-      var coLayerGroup = []
-    //filteredResponse.forEach(entry => {
-      for (var i=0; i <filteredResponse.length; i ++){
-        var entry = filteredResponse[i];
-        //console.log(entry)
-        //console.log(entry.coord)
-      // var circleCO = L.circle([entry.coord[0], entry.coord[1]], {
-      //   color: 'blue',
-      //   fillColor: 'blue',
-      //   fillOpacity: 0.5,
-      //   radius: setRadius(entry.co)*25000
-      // }).addTo(myMap);
+    // var coLayerGroup = []
+    // filteredResponse.forEach(entry => {
+    for (var i =0 ; i < filteredResponse.length; i ++){
       var circleCO = L.circle([entry.coord[0], entry.coord[1]], {
         color: 'blue',
         fillColor: 'blue',
         fillOpacity: 0.5,
         radius: setRadius(entry.co)*25000
-      })
-
-      // var coLayerGroup = []
-      coLayerGroup.push(circleCO);
+      }).addTo(myMap);
       
-      //console.log(circleCO)
-      
+      var circleO3 = L.circle([entry.coord[0], entry.coord[1]], {
+        color: 'red',
+        fillColor: 'red',
+        fillOpacity: 0.5,
+        radius: setRadius(entry.o3)*5000
+      }).addTo(myMap);
 
-      // var circleO3 = L.circle([entry.coord[0], entry.coord[1]], {
-      //   color: 'red',
-      //   fillColor: 'red',
-      //   fillOpacity: 0.5,
-      //   radius: setRadius(entry.o3)*5000
-      // }).addTo(myMap);
+      var circleSO2 = L.circle([entry.coord[0], entry.coord[1]], {
+        color: 'green',
+        fillColor: 'green',
+        fillOpacity: 0.5,
+        radius: setRadius(entry.so2)*10000
+      }).addTo(myMap);
 
-      // var circleSO2 = L.circle([entry.coord[0], entry.coord[1]], {
-      //   color: 'green',
-      //   fillColor: 'green',
-      //   fillOpacity: 0.5,
-      //   radius: setRadius(entry.so2)*10000
-      // }).addTo(myMap);
-
-      // var circleNO2 = L.circle([entry.coord[0], entry.coord[1]], {
-      //   color: 'yellow',
-      //   fillColor: 'yellow',
-      //   fillOpacity: 0.5,
-      //   radius: setRadius(entry.no2)*15000
-      // }).addTo(myMap);
+      var circleNO2 = L.circle([entry.coord[0], entry.coord[1]], {
+        color: 'yellow',
+        fillColor: 'yellow',
+        fillOpacity: 0.5,
+        radius: setRadius(entry.no2)*15000
+      }).addTo(myMap);
 
       var marker = L.marker([entry.coord[0], entry.coord[1]]).addTo(myMap);
-    //   var cityMarkers =[]
-    //   cityMarkers.push(
-    //     L.marker([entry.coord[0], entry.coord[1]])
-    // )
 
       marker.bindPopup("<b>" + entry.state + "</b><hr>Year: " + Math.round(entry.year) + "</b><br>CO: " + Math.round(entry.co) + "<br>SO2: " + Math.round(entry.so2) + "<br>NO2: " + Math.round(entry.no2) + "<br>O3: " + Math.round(entry.o3))
 
-    } //)
-    console.log(coLayerGroup)
+      // return circleCO
+    }
+    // })
+
   })
 
 }
