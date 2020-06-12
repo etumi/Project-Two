@@ -29,9 +29,9 @@ app=Flask(__name__) #, static_url_path="", static_folder="web/static", template_
 def home():
     return (render_template("index.html"))
 
-@app.route("/weather")
+@app.route("/timeline")
 def timeline():
-    return (render_template("weather.html"))
+    return (render_template("timeline.html"))
 
 @app.route("/heatmap")
 def heatmap():

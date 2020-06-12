@@ -17,6 +17,8 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="../static/css/style.css" />
     <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css" />
+    <!-- Chart js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
     <title>Pollution Distribution</title>
   </head>
   
@@ -30,7 +32,7 @@
       <div class="collapse navbar-collapse" id="navbarColor03">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="weather">CO2 Timeline<span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="timeline">CO2 Timeline<span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item active">
             <a class="nav-link" href="heatmap">Pollution Map</a>
@@ -45,50 +47,45 @@
     <!-- vertical bar-->
     
     <nav class="nav navbar-expand-lg flex-sm-column">
-        <a class="nav-link active" href="#">State</a>
-        <a class="nav-link" href="#">AQI</a>
-        <a class="nav-link" href="#">Year</a>
-        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+      <!-- <div>
+        <select id="state_selection" style="padding-left: 20px;"></select>
+      </div> -->
+      <br>
+      <div class="form-group">
+        <label style="text-align: center;" for="state_selection">State</label>
+        <select class="form-control" id="state_selection" ></select>
+      </div>
+      <br>
+      <label for="slidecontainer">Years</label>
+        <!-- <div class="slidecontainer" style="padding-left: 20%;"> -->
+          <select class="slidecontainer"></select>
+        <!-- </div> -->
+        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Slide slider to view different years</a>
     </nav>
 
     <!-- Content -->
       <div class="container">
-        <!-- <div class="row">
-            <div class="col-l-8">
-                <br>
-                <br>
-                <br>
-                <div class="chart">
-                </div>
-            </div>
-            <div class="col-md-4">
-                <br>
-                <br>
-                <br>
-                <div class="card border-primary mb-3" style="max-width: 20rem;">
-                    <div class="card-header">Header</div>
-                    <div class="card-body">
-                        <h4 class="card-title">Primary card title</h4>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    </div>
-            </div>
+        
+          <!-- <div>
+            <select id="state_selection"></select>
+          </div> -->
+          
+          <div id="charty">
+            <br>
+            <br>
+            <canvas id="myChart"></canvas>
           </div>
-        </div>
-      </div> -->
-      <div class="row">
-      <div id="pie"></div>
-      <div class="row">
-      <!-- <div id="map" style="visibility: hidden;"></div> -->
+          
+            <!-- <div class="slidecontainer">Years</div> -->
+
+      </div>
 
     <!-- API Key -->
     <script type="text/javascript" src="../static/js/config.js"></script> 
 
     <!-- JS -->
-    <script type="text/javascript" src="../static/js/heatmap.js"></script>
     <script type="text/javascript" src="../static/js/pie.js"></script>
 
-    <!-- Leaflet heatmap plugin -->
-    <script type="text/javascript" src="../static/js/leaflet-heat.js"></script>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

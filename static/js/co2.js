@@ -57,7 +57,7 @@ d3.json(url).then(response=> {
       
     var innerContainer = document.querySelector('[data-num="0"'),
         plotEl = innerContainer.querySelector('.plot'),
-        stateSelector = innerContainer.querySelector('.statedata');
+        stateSelector = innerContainer.querySelector('#statedata');
     
     function assignOptions(textArray, selector) {
       for (var i = 0; i < textArray.length;  i++) {
