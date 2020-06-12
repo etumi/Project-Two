@@ -33,9 +33,9 @@ def home():
 def timeline():
     return (render_template("timeline.html"))
 
-@app.route("/heatmap")
+@app.route("/map")
 def heatmap():
-    return (render_template("heatmap.html"))
+    return (render_template("map.html"))
 
 @app.route("/pie")
 def pie():
