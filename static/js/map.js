@@ -40,18 +40,6 @@ var overlays = {
 // Create a control for our layers, add our overlay layers to it
 L.control.layers(null, overlays).addTo(myMap);
 
-// // Create a legend to display information about our map
-// var info = L.control({
-//     position: "bottomright"
-//   });
-
-// // When the layer control is added, insert a div with the class of "legend"
-// info.onAdd = function() {
-//     var div = L.DomUtil.create("div", "legend");
-//     return div;
-//   };
-// // Add the info legend to the map
-// info.addTo(myMap);
 
 function setRadius(aqi){
 
@@ -200,15 +188,6 @@ yearsDropDown.on("change", function() {
     })
       
 })
-
-// Update the legend's innerHTML with the last updated time and station count
-// function updateLegend(time, stationCount) {
-//     document.querySelector(".legend").innerHTML = [
-//       "<p>AQI Range</p>",
-//       "<br>",
-//       "<p>0-50: Good</p>"
-//     ].join("");
-// //   }
 
 // LEGEND //
 
